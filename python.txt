@@ -1,0 +1,56 @@
+Intro to python
+    -> create a python file .py exe
+    -> Environment setup 
+        > installation of the necessary tools (IDE, python)
+    -> run/ execute a python script within a file
+    
+Data Types 
+Functions -> Fundamentals of python 
+
+Control Flow 
+----->  IF ELSE
+----->  FOR LOOP
+----->  WHILE LOOP
+----->  BREAK AND CONTINUE SYNTAX 
+
+Decorator > A Decorator
+
+
+Sequencing -> Dictionaries, Tuples, List
+
+Decorators 
+List comprehensions 
+Generator Expressions
+Pytest setup (Environment)
+
+------------------------------------------
+OOP - Object Oriented Programming using python
+---------------------------------------------
+
+Into ->
+    ---> Classes and Objects
+    ---> Principles of OOP
+    ---> Python Inheritance 
+    ---> Multiple Inheritance
+    ---> Abrastraction,  Polymorphysim & Encapsulation
+    ---> Operator Overloading
+
+ A course management application using python oop principles and sqlite database
+
+ -> Setup sqlite database
+ -> Define our Classes
+ -> Implement CRUD Operations for our course management
+ -> Create a simple CMD interface 
+
+ User stories 
+ 
+ -> A user can add a course 
+ -> A user a student 
+ -> A user can register a student to a course 
+ -> A user can get all the available courses 
+ -> a user can be able to get all students 
+ -> Bonus: A user can be able to get a list of students within a specific course 
+
+ ** SQL STATEMENTS, ASSOCIATIONS, SQL QUERIES **
+
+
