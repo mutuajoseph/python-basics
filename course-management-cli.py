@@ -18,7 +18,7 @@ class CourseManagementSystem:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS courses (
                 id INTEGER PRIMARY KEY,
-                name TEXT,
+                name TEXT UNIQUE,
                 instructor TEXT
             )
         ''')
@@ -28,7 +28,7 @@ class CourseManagementSystem:
                 id INTEGER PRIMARY KEY,
                 first_name TEXT,
                 last_name TEXT,
-                email TEXT
+                email TEXT UNIQUE
             )
         ''')
 
@@ -37,26 +37,50 @@ class CourseManagementSystem:
                 student_id INTEGER,
                 course_id INTEGER, 
                 FOREIGN KEY(student_id) REFERENCES students(id),
-                FOREIGN KEY(course_id) REFERENCES courses(id)
+                FOREIGN KEY(course_id) REFERENCES courses(id),
+                UNIQUE(student_id, course_id)
             )
         ''')
         
         self.conn.commit()
 
     def add_course(self, name, instructor):
-        cursor = self.conn.cursor()
-        cursor.execute("INSERT INTO courses (name, instructor) VALUES (?, ?)", (name, instructor))
-        self.conn.commit()
+
+        if not name or not instructor:
+            print("Error: Name and Instructor are required!")
+
+        try: 
+            cursor = self.conn.cursor()
+            cursor.execute("INSERT INTO courses (name, instructor) VALUES (?, ?)", (name, instructor))
+            self.conn.commit()
+            print("Course Added Successfully")
+
+        except sqlite3.IntegrityError:
+            print(f"Error: Course {name} already exists!") 
 
     def add_student(self, first_name, last_name, email):
-        cursor = self.conn.cursor()
-        cursor.execute("INSERT INTO students (first_name, last_name, email) VALUES (?, ?, ?)", (first_name, last_name, email))
-        self.conn.commit()
+
+        if not first_name or not last_name or not email: 
+            print("Error: First Name, Last Name and email are required!")
+        
+        try: 
+            cursor = self.conn.cursor()
+            cursor.execute("INSERT INTO students (first_name, last_name, email) VALUES (?, ?, ?)", (first_name, last_name, email))
+            self.conn.commit()
+            print("Student Added Successfully")
+        
+        except sqlite3.IntegrityError:
+            print(f"Error: Student {first_name} {last_name} already exists!")
 
     def register_student_to_course(self, student_id, course_id):
-        cursor = self.conn.cursor()
-        cursor.execute("INSERT INTO registrations (student_id, course_id) VALUES (?, ?)", (student_id, course_id))
-        self.conn.commit()
+        try: 
+
+            cursor = self.conn.cursor()
+            cursor.execute("INSERT INTO registrations (student_id, course_id) VALUES (?, ?)", (student_id, course_id))
+            self.conn.commit()
+            print("Student successfully added to this course")
+        except sqlite3.IntegrityError: 
+            print("Student is already added to this course")
 
     def get_all_courses(self):
         cursor = self.conn.cursor()
@@ -89,7 +113,7 @@ if __name__ == '__main__':
     # moringa_course_management.add_student("Cynthia", "Chepkemoi", "cynthia@gmail.com")
 
     # # Register students to a course 
-    # moringa_course_management.register_student_to_course(1, 1)
+    # moringa_course_management.register_student_to_course(1, 2)
     # moringa_course_management.register_student_to_course(2, 2)
     # moringa_course_management.register_student_to_course(5, 2)
     # moringa_course_management.register_student_to_course(7, 1)
@@ -110,6 +134,9 @@ if __name__ == '__main__':
     # DUPLICATE DATA 
     # MISSING COLUMN VALUES 
     # NON LOGICAL ASSIGNMENT OF VALUES TO COLUMNS WITHIN THE DB
+
+    # handling exceptions using the try catch 
+    # db schema management -> Data uniqueness and data validation
 
 
 
