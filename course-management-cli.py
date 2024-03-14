@@ -101,16 +101,16 @@ if __name__ == '__main__':
 
     moringa_course_management = CourseManagementSystem("moringa_course_manager.db")
 
-    # # Add some course 
-    # moringa_course_management.add_course("Software Development", "Abel Kipkorir")
-    # moringa_course_management.add_course("Character Development", "Clare Oparo")
+    # Add some course 
+    moringa_course_management.add_course("Software Development", "Abel Kipkorir")
+    moringa_course_management.add_course("Character Development", "Clare Oparo")
 
-    # # Add students
-    # moringa_course_management.add_student("John", "Kimani", "johnkimani@gmail.com")
-    # moringa_course_management.add_student("Naomi", "Lagat", "naomilagat@gmail.com")
-    # moringa_course_management.add_student("Mariam", "Senzia", "mariam@gmail.com")
-    # moringa_course_management.add_student("Dennis", "Kioko", "dennis@gmail.com")
-    # moringa_course_management.add_student("Cynthia", "Chepkemoi", "cynthia@gmail.com")
+    # Add students
+    moringa_course_management.add_student("John", "Kimani", "johnkimani@gmail.com")
+    moringa_course_management.add_student("Naomi", "Lagat", "naomilagat@gmail.com")
+    moringa_course_management.add_student("Mariam", "Senzia", "mariam@gmail.com")
+    moringa_course_management.add_student("Dennis", "Kioko", "dennis@gmail.com")
+    moringa_course_management.add_student("Cynthia", "Chepkemoi", "cynthia@gmail.com")
 
     # # Register students to a course 
     # moringa_course_management.register_student_to_course(1, 2)
@@ -138,5 +138,9 @@ if __name__ == '__main__':
     # handling exceptions using the try catch 
     # db schema management -> Data uniqueness and data validation
 
+
+    # WhAT IS ORM
+    # how is it important 
+    # how can we use it to convert our app to conform to its strategies
 
 
